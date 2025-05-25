@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { createContext, useContext } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { dummyProducts } from "../assets/assets";
 
 import axios from "axios";
 
