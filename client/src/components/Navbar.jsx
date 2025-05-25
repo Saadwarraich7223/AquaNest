@@ -15,7 +15,6 @@ const Navbar = () => {
     setSearchQuery,
     searchQuery,
     getCartCount,
-    isSeller,
     axios,
   } = useAppContext();
   const [scrolled, setScrolled] = useState(false);
@@ -95,11 +94,7 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <div className="hidden sm:flex items-center gap-8">
-        <NavLinks
-          location={location}
-          isSeller={isSeller}
-          itemVariants={itemVariants}
-        />
+        <NavLinks location={location} itemVariants={itemVariants} />
 
         <motion.div
           variants={itemVariants}
@@ -241,7 +236,6 @@ const Navbar = () => {
             className="absolute top-[60px] left-0 w-full bg-white shadow-md py-6 flex flex-col items-start gap-4 px-6 text-sm sm:hidden overflow-hidden z-40"
           >
             <MobileNavLinks
-              isSeller={isSeller}
               setOpen={setOpen}
               variants={mobileItemVariants}
               user={user}
@@ -303,12 +297,12 @@ const Navbar = () => {
   );
 };
 
-const NavLinks = ({ location, itemVariants, isSeller }) => {
+const NavLinks = ({ location, itemVariants }) => {
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/products", label: "All Products" },
     { path: "/contact", label: "Contact" },
-    ...(isSeller ? [{ path: "/seller", label: "Dashboard" }] : []),
+    { path: "/seller", label: "Dashboard" },
   ];
 
   return navItems.map((item) => (
@@ -336,13 +330,13 @@ const NavLinks = ({ location, itemVariants, isSeller }) => {
   ));
 };
 
-const MobileNavLinks = ({ isSeller, setOpen, variants, user }) => {
+const MobileNavLinks = ({ setOpen, variants, user }) => {
   const navItems = [
     { path: "/", label: "Home", icon: "🏠", show: true },
     { path: "/products", label: "All Products", icon: "🛒", show: true },
     { path: "/my-orders", label: "My Orders", icon: "📦", show: user },
     { path: "/contact", label: "Contact", icon: "📞", show: true },
-    { path: "/seller", label: "Dahsboard", icon: "👨‍💻", show: isSeller },
+    { path: "/seller", label: "Dahsboard", icon: "👨‍💻", show: true },
   ];
 
   return navItems.map(

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { MdDeleteForever } from "react-icons/md";
+import { RefreshCcw } from "lucide-react";
 import toast from "react-hot-toast";
 
 const Messages = () => {
@@ -92,6 +93,13 @@ const Messages = () => {
       toast.error(error.message);
     }
   };
+  const [isRotating, setIsRotating] = useState(false);
+
+  const reloadMessages = () => {
+    getMessages();
+    setIsRotating(true);
+    setTimeout(() => setIsRotating(false), 1000);
+  };
   const deleteMessage = async (id) => {
     try {
       const { data } = await axios.post("/api/message/delete", { id });
@@ -122,7 +130,19 @@ const Messages = () => {
   return (
     <div className="max-w-4xl overflow-y-scroll no-scrollbar  mx-auto p-6 bg-gray-50">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Messages</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">Messages</h1>
+          <button
+            onClick={() => reloadMessages()}
+            className="p-2 cursor-pointer"
+          >
+            <RefreshCcw
+              className={`w-6 h-6 transition-transform ${
+                isRotating ? "animate-spin" : ""
+              }`}
+            />
+          </button>
+        </div>
         <p className="text-gray-600">
           Click on any message to expand and view full details
         </p>

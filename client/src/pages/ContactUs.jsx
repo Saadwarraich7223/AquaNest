@@ -77,7 +77,7 @@ export default function ContactUs() {
               <Phone className="text-[#1e3a8a]" />
               <div>
                 <p className="text-sm text-gray-500">Phone</p>
-                <p className="font-medium">+1 (555) 123-4567</p>
+                <p className="font-medium">+92 (301) 7353846</p>
               </div>
             </motion.div>
 
