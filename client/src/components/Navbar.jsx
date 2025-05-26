@@ -98,7 +98,7 @@ const Navbar = () => {
 
         <motion.div
           variants={itemVariants}
-          className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 rounded-full overflow-hidden group hover:border-primary transition-all duration-300 focus-within:border-primary focus-within:shadow-sm focus-within:shadow-primary/30"
+          className="hidden xl:flex items-center text-sm gap-2 border border-gray-300 rounded-full overflow-hidden group hover:border-primary transition-all duration-300 focus-within:border-primary focus-within:shadow-sm focus-within:shadow-primary/30"
         >
           <input
             className="py-2 px-4 w-full bg-transparent outline-none placeholder-gray-500"
