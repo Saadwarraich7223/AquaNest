@@ -14,7 +14,7 @@ import thumbnail4 from "./thumbnail4.jpg";
 import fish from "./fish.png";
 import fishfood from "./fishfood.png";
 import fishtank from "./fishtank.png";
-import fishtankAccessories from "./fishtankAccessories.png";
+import fishTankAccessories from "./fishTankAccessories.png";
 
 import search_icon from "./search_icon.svg";
 import remove_icon from "./remove_icon.svg";
@@ -122,7 +122,7 @@ export const categories = [
   {
     text: "Tank Accessories",
     path: "Accessories",
-    image: fishtankAccessories,
+    image: fishTankAccessories,
     bgColor: "rgba(78, 205, 196, 0.4)", // Aquatic teal with 70% opacity
   },
 ];
