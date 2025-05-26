@@ -85,7 +85,7 @@ const ProductCard = ({ product }) => {
                 {currency} {product.offerPrice} {""}
               </p>
               <p className="text-gray-500/60 md:text-sm text-xs line-through">
-                ${product.price}
+                {currency} {product.price}
               </p>
             </div>
             <div onClick={(e) => e.stopPropagation()} className="text-primary">
