@@ -77,7 +77,7 @@ const Categories = () => {
               className="group cursor-pointer"
             >
               <div
-                className="rounded-3xl p-8 h-60 flex flex-col items-center justify-center relative overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500"
+                className="rounded-3xl p-4 md:p-8 h:40 md:h-60 flex flex-col items-center justify-center relative overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500"
                 style={{ backgroundColor: category.bgColor }}
               >
                 {/* Background Pattern */}
@@ -92,7 +92,7 @@ const Categories = () => {
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   className="relative mb-6 z-10"
                 >
-                  <div className="w-32 h-32 rounded-2xl overflow-hidden shadow-lg bg-white p-4">
+                  <div className="md:w-32 md:h-32 w-20 h-20  rounded-2xl overflow-hidden shadow-lg bg-white p-4">
                     <img
                       src={category.image}
                       alt={category.text}
@@ -131,7 +131,7 @@ const Categories = () => {
 
                 {/* Text */}
                 <motion.h3
-                  className="text-xl font-medium text-gray-800 text-center tracking-wide group-hover:text-gray-900 transition-colors duration-300"
+                  className="md:text-xl text-md font-medium text-gray-800 text-center tracking-wide group-hover:text-gray-900 transition-colors duration-300"
                   whileHover={{ scale: 1.02 }}
                 >
                   {category.text}

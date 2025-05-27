@@ -9,45 +9,6 @@ const Messages = () => {
   const { axios } = useAppContext();
   const [messages, setMessages] = useState([]);
 
-  // const messages = [
-  //   {
-  //     id: 1,
-  //     name: "John Doe",
-  //     email: "john.doe@example.com",
-  //     message:
-  //       "Hello! I'm interested in your aquarium products. Could you please provide more information about the pricing and availability of your premium fish tanks? I'm particularly looking for something around 50 gallons with LED lighting system. Also, do you offer installation services?",
-  //     createdAt: "2024-01-15T10:30:00Z",
-  //     read: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Sarah Johnson",
-  //     email: "sarah.j@email.com",
-  //     message:
-  //       "I recently purchased a filter system from your store and I'm having some issues with the installation. The manual isn't very clear about the setup process. Could someone help me with this?",
-  //     createdAt: "2024-01-14T14:22:00Z",
-  //     read: true,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Mike Wilson",
-  //     email: "mike.wilson@company.com",
-  //     message:
-  //       "Great service! The delivery was fast and the products are exactly as described. I'll definitely be ordering again soon. Thanks for the excellent customer service.",
-  //     createdAt: "2024-01-13T09:15:00Z",
-  //     read: true,
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Emily Davis",
-  //     email: "emily.davis@gmail.com",
-  //     message:
-  //       "Do you have any discounts available for bulk orders? I'm looking to set up multiple aquariums for my office space and would need around 5-6 complete setups. Please let me know about any special pricing options.",
-  //     createdAt: "2024-01-12T16:45:00Z",
-  //     read: false,
-  //   },
-  // ];
-
   const toggleMessage = async (message) => {
     const { _id, isRead } = message;
 
@@ -162,11 +123,6 @@ const Messages = () => {
               readMessage(msg);
             }}
           >
-            {/* Unread indicator */}
-            {!msg.isRead && (
-              <div className="absolute top-4 right-4 w-3 h-3 bg-blue-500 rounded-full"></div>
-            )}
-
             <div className="p-6">
               {/* Header */}
               <div className="flex items-start  justify-between mb-4">
@@ -193,7 +149,10 @@ const Messages = () => {
                     ↓
                   </span>
                   <button
-                    onClick={() => deleteMessage(msg._id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteMessage(msg._id);
+                    }}
                     className="cursor-pointer text-red-700 px-1 py-1 rounded bg-gray-300"
                   >
                     <MdDeleteForever size={22} />

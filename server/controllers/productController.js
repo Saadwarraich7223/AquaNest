@@ -64,6 +64,18 @@ export const changeStock = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+// Change product price : /api/product/price
+export const changePrice = async (req, res) => {
+  try {
+    const { id, price, offerPrice } = req.body;
+
+    await Product.findByIdAndUpdate(id, { price, offerPrice });
+    res.json({ success: true, message: "Price updated" });
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+  }
+};
 
 //  Delete product : /api/product/delete
 export const deleteProduct = async (req, res) => {

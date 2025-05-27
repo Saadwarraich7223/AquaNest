@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
     },
   };
   return (
-    <div className="mt-16 px-6 pt-8 pb-18  bg-slate-100 shadow-xl">
+    <div className="mt-16 px-2 md:px-6 pt-8 pb-18  bg-slate-100 shadow-xl">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ const FeaturedProducts = () => {
         initial="hidden"
         animate="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="grid grid-cols-2 justify-items-center sm:grid-cols-3 md:grid-cols-4 gap-3  md:gap-6 lg:grid-cols-5 mt-6"
+        className="grid grid-cols-2  justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
       >
         {!products || products.length === 0
           ? null

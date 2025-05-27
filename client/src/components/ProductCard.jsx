@@ -79,7 +79,7 @@ const ProductCard = ({ product }) => {
               ))}
             <p className="ml-1 text-xs">({4})</p>
           </div>
-          <div className="flex items-end justify-between mt-4">
+          <div className="flex flex-col w-full gap-2 mt-4">
             <div>
               <p className="md:text-xl text-base font-bold text-primary">
                 {currency} {product.offerPrice} {""}
@@ -91,7 +91,7 @@ const ProductCard = ({ product }) => {
             <div onClick={(e) => e.stopPropagation()} className="text-primary">
               {!cartItems[product._id] ? (
                 <motion.button
-                  className="flex cursor-pointer items-center justify-center gap-1 bg-primary/10 border border-primary/40 md:w-[80px] w-[64px] h-[34px] rounded-full text-primary font-medium"
+                  className="flex cursor-pointer items-center justify-center gap-1 bg-primary/10 border border-primary/40  w-full h-[34px] rounded-full text-primary font-medium"
                   onClick={() => addToCart(product._id)}
                   whileTap="tap"
                   whileHover="hover"
@@ -107,7 +107,7 @@ const ProductCard = ({ product }) => {
                 </motion.button>
               ) : (
                 <motion.div
-                  className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-primary/10 border border-primary/40 rounded-full select-none"
+                  className="flex items-center justify-center gap-2  w-full h-[34px] bg-primary/10 border border-primary/40 rounded-full select-none"
                   whileHover={{
                     backgroundColor: "rgba(var(--color-primary-rgb), 0.2)",
                   }}
@@ -140,7 +140,7 @@ const ProductCard = ({ product }) => {
           </div>
 
           {/* Sale badge - show only if there's a significant discount */}
-          {product.price - product.offerPrice > 10 && (
+          {product.price - product.offerPrice > 500 && (
             <motion.div
               className="absolute top-2 left-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded-full"
               initial={{ opacity: 0, scale: 0.8 }}

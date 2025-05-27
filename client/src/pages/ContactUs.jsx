@@ -38,12 +38,12 @@ export default function ContactUs() {
   }, [user]);
 
   return (
-    <main className="min-h-screen bg-[#f8fafc] text-gray-900 px-6 py-16 flex items-center justify-center">
+    <main className="min-h-screen bg-[#f8fafc] text-gray-900 px-0 md:px-6 py-16 flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-6xl w-full bg-white p-10 rounded-2xl shadow-xl grid grid-cols-1 md:grid-cols-2 gap-10"
+        className="max-w-6xl w-full bg-white p-5 md:p-10  rounded-2xl shadow-xl grid grid-cols-1 md:grid-cols-2 gap-10"
       >
         {/* Left Column - Info */}
         <div className="space-y-6">

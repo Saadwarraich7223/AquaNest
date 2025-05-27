@@ -1,12 +1,15 @@
 import toast from "react-hot-toast";
 import { useAppContext } from "../../context/AppContext";
 import { useEffect, useState } from "react";
-import { assets } from "../../assets/assets";
+import { SquarePen, CircleX } from "lucide-react";
 
 const ProductList = () => {
   const { products, currency, axios, fetchProducts } = useAppContext();
   const [showConfirm, setShowConfirm] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [editProductId, setEditProductId] = useState(null);
+  const [editPrice, setEditPrice] = useState("");
+  const [editOfferPrice, setEditOfferPrice] = useState("");
 
   const deleteProduct = async (id) => {
     try {
@@ -46,6 +49,31 @@ const ProductList = () => {
     setShowConfirm(false);
   };
 
+  const handleEditClick = (product) => {
+    setEditProductId(product._id);
+    setEditPrice(product.price);
+    setEditOfferPrice(product.offerPrice);
+  };
+
+  const handleSaveEdit = async () => {
+    try {
+      const { data } = await axios.post("/api/product/change-price", {
+        id: editProductId,
+        price: editPrice,
+        offerPrice: editOfferPrice,
+      });
+      if (data.success) {
+        fetchProducts();
+        toast.success("Price updated");
+      } else {
+        toast.error("Failed to update price");
+      }
+      setEditProductId(null);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -60,11 +88,11 @@ const ProductList = () => {
               <tr>
                 <th className="px-4 py-3 font-semibold truncate">Product</th>
                 <th className="px-4 py-3 font-semibold truncate">Category</th>
-                <th className="px-4 py-3 font-semibold truncate hidden md:block">
-                  Selling Price
+                <th className="px-4 py-3 font-semibold truncate">Price</th>
+                <th className="px-4 py-3 font-semibold hidden md:block truncate">
+                  In Stock
                 </th>
-                <th className="px-4 py-3 font-semibold truncate">In Stock</th>
-                <th className="px-4 py-3 font-semibold truncate">Delete</th>
+                <th className="px-4 py-3 font-semibold truncate">Actions</th>
               </tr>
             </thead>
             <tbody className="text-sm text-gray-500">
@@ -83,11 +111,10 @@ const ProductList = () => {
                     </span>
                   </td>
                   <td className="px-4 py-3">{product.category}</td>
-                  <td className="px-4 py-3 max-sm:hidden">
-                    {currency}
-                    {product.offerPrice}
-                  </td>
                   <td className="px-4 py-3">
+                    {currency} {product.offerPrice}
+                  </td>
+                  <td className="px-4 hidden md:table-cell py-3">
                     <label className="relative inline-flex items-center cursor-pointer text-gray-900 gap-3">
                       <input
                         onChange={() =>
@@ -101,12 +128,18 @@ const ProductList = () => {
                       <span className="dot absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
                     </label>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 flex gap-2 flex-wrap">
+                    <button
+                      onClick={() => handleEditClick(product)}
+                      className="bg-gray-100 p-2 rounded hover:bg-gray-200 cursor-pointer text-primary"
+                    >
+                      <SquarePen />
+                    </button>
                     <button
                       onClick={() => handleDeleteClick(product._id)}
-                      className="bg-gray-100 p-2 rounded cursor-pointer hover:bg-gray-200"
+                      className="bg-gray-100 cursor-pointer text-red-500 p-2 rounded hover:bg-gray-200"
                     >
-                      <img src={assets.remove_icon} alt="" />
+                      <CircleX />
                     </button>
                   </td>
                 </tr>
@@ -137,6 +170,56 @@ const ProductList = () => {
                 >
                   Cancel
                 </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Edit Popup */}
+        {editProductId && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+            <div
+              className="bg-white
+             rounded-xl p-6 max-w-sm w-full mx-4 shadow-xl"
+            >
+              <h2 className="text-xl font-semibold mb-4 text-center">
+                Edit Price
+              </h2>
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="">Price</label>
+                  <input
+                    type="number"
+                    value={editPrice}
+                    onChange={(e) => setEditPrice(e.target.value)}
+                    placeholder="Price"
+                    className="border border-gray-300 outline-primary px-4 py-2 rounded"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="">Offer Price</label>
+                  <input
+                    type="number"
+                    value={editOfferPrice}
+                    onChange={(e) => setEditOfferPrice(e.target.value)}
+                    placeholder="Offer Price"
+                    className="border outline-primary border-gray-300 px-4 py-2 rounded"
+                  />
+                </div>
+                <div className="flex gap-4 justify-end pt-2">
+                  <button
+                    onClick={handleSaveEdit}
+                    className="bg-primary cursor-pointer text-white px-4 py-2 rounded hover:bg-primary-dull"
+                  >
+                    Save
+                  </button>
+                  <button
+                    onClick={() => setEditProductId(null)}
+                    className="bg-gray-300 cursor-pointer text-gray-800 px-4 py-2 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
             </div>
           </div>
