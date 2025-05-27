@@ -117,6 +117,7 @@ const MyOrders = () => {
       const { data } = await axios.get("/api/order/user");
       if (data.success) {
         setMyOrders(data.orders);
+        console.log(data.orders);
       } else {
         toast.error("No orders placed");
       }
@@ -161,16 +162,16 @@ const MyOrders = () => {
                 <div className="flex items-center mb-4 md:mb-0">
                   <div className="bg-primary/10 p-4 rounded-lg  gap-4">
                     <img
-                      src={item.product.image[0]}
+                      src={item.product?.image[0]}
                       alt=""
                       className="w-16 h-16"
                     />
                   </div>
                   <div className="ml-4">
                     <h2 className="font-medium text-xl text-gray-800">
-                      {item.product.name}
+                      {item.product?.name}
                     </h2>
-                    <p>Category : {item.product.category}</p>
+                    <p>Category : {item.product?.category}</p>
                   </div>
                 </div>
 
@@ -206,7 +207,7 @@ const MyOrders = () => {
                 <div className="flex flex-col ">
                   <p className="text-primary/70 text-lg font-medium">
                     Amount : {currency}
-                    {item.product.offerPrice * item.quantity}
+                    {item.product?.offerPrice * item.quantity}
                   </p>
                   <p
                     className={`${

@@ -111,12 +111,12 @@ const SellerLayout = () => {
       )}
 
       {/* Layout: Sidebar + Content */}
-      <div className="flex relative">
+      <div className="flex relative overflow-hidden">
         {/* Sidebar */}
         <aside
           className={`${
             isMobile
-              ? `fixed top-[70px] right-0 h-[calc(100vh-72px)] z-40 transition-transform duration-300 bg-white/20 backdrop-blur-xl shadow-lg border-l border-white/80 ${
+              ? `fixed top-[70px] right-0 h-[90vh] z-40 transition-transform duration-300 bg-white/20 backdrop-blur-xl shadow-lg border-l border-white/80 ${
                   showSidebar ? "translate-x-0" : "translate-x-full"
                 } w-64`
               : `sticky top-[81px] transition-width duration-400 z-10 bg-white/80 backdrop-blur-xl border-r border-white/20 shadow-xl ${
