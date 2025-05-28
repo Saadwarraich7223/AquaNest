@@ -101,7 +101,7 @@ const SellerLayout = () => {
           {isMobile && (
             <button
               onClick={() => setShowSidebar(!showSidebar)}
-              className="text-2xl cursor-pointer text-primary font-bold transition-all hover:text-blue-800"
+              className="text-2xl cursor-pointer text-primary font-bold transition-all outline-none hover:text-blue-800"
               aria-label={showSidebar ? "Close Navbar" : "Open Navbar"}
             >
               {showSidebar ? <X /> : <AlignRight />}
@@ -134,7 +134,7 @@ const SellerLayout = () => {
         <aside
           className={`${
             isMobile
-              ? `fixed top-[70px] right-0 bottom-0 z-50 drop-blur-xl transition-transform duration-300 bg-white/70 shadow-2xl border-l border-white/90 ${
+              ? `fixed top-[70px] right-0 bottom-0 z-50 backdrop-blur-xl transition-transform duration-300 bg-white/90 shadow-2xl border-l border-white/95 ${
                   showSidebar ? "translate-x-0" : "translate-x-full"
                 } w-60 max-w-[85vw]`
               : `sticky top-[81px] transition-all duration-400 z-10 bg-white/80 backdrop-blur-xl border-r border-white/20 shadow-xl ${
