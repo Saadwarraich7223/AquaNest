@@ -13,12 +13,12 @@ export const placeOrderCOD = async (req, res) => {
       return res.json({ success: false, message: "Invalid Data" });
     }
 
-    // Calculate Amount using Items
-    let amount = await items.reduce(async (acc, item) => {
-      const product = await Product.findById(item.product);
+    let amount = 0;
 
-      return acc + product.offerPrice * item.quantity;
-    }, 0);
+    for (const item of items) {
+      const product = await Product.findById(item.product);
+      amount += product.offerPrice * item.quantity;
+    }
 
     // Add tax 2%
     amount += Math.floor(amount * 0.02);
@@ -50,18 +50,19 @@ export const placeOrderStripe = async (req, res) => {
       return res.json({ success: false, message: "Invalid Data" });
     }
 
+    // Calculate Amount using Items
+    let amount = 0;
     let productData = [];
 
-    // Calculate Amount using Items
-    let amount = await items.reduce(async (acc, item) => {
+    for (const item of items) {
       const product = await Product.findById(item.product);
       productData.push({
         name: product.name,
         quantity: item.quantity,
         price: product.offerPrice,
       });
-      return acc + product.offerPrice * item.quantity;
-    }, 0);
+      amount += product.offerPrice * item.quantity;
+    }
 
     // Add tax 2%
     amount += Math.floor(amount * 0.02);
@@ -161,6 +162,9 @@ export const stripeWebhooks = async (req, res) => {
 export const updateOrderStatus = async (req, res) => {
   try {
     const { id, status } = req.body;
+    if (status === "Delivered") {
+      await Order.findByIdAndUpdate(id, { status: status, isPayed: true });
+    }
     await Order.findByIdAndUpdate(id, { status: status });
     res.json({ success: true, message: "Order Status Updated" });
   } catch (error) {

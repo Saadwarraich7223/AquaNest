@@ -18,6 +18,7 @@ const Navbar = () => {
     axios,
   } = useAppContext();
   const [scrolled, setScrolled] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -150,7 +151,14 @@ const Navbar = () => {
             Login
           </motion.button>
         ) : (
-          <div className="relative group">
+          <div
+            className="relative inline-block"
+            onClick={() => {
+              setShowDropdown((prev) => !prev);
+            }}
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)}
+          >
             <motion.img
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -158,22 +166,25 @@ const Navbar = () => {
               alt="profile"
               className="w-10 cursor-pointer"
             />
-            <ul className="opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 absolute top-12 right-0 bg-white shadow-lg border border-gray-200 py-2.5 w-32 rounded-md text-sm z-40">
-              <motion.li
-                whileHover={{ backgroundColor: "#4fbf8b", x: 0.5 }}
-                onClick={() => navigate("/my-orders")}
-                className="p-2 pl-3 cursor-pointer flex items-center gap-2"
-              >
-                📦 My Orders
-              </motion.li>
-              <motion.li
-                whileHover={{ backgroundColor: "#4fbf8b", x: 0.5 }}
-                onClick={logout}
-                className="p-2 pl-3 cursor-pointer flex items-center gap-2"
-              >
-                🚪 Logout
-              </motion.li>
-            </ul>
+
+            {showDropdown && (
+              <ul className="absolute top-12 right-0 bg-white shadow-lg border border-gray-200 py-2.5 w-32 rounded-md text-sm z-40">
+                <motion.li
+                  whileHover={{ backgroundColor: "#4fbf8b", x: 0.5 }}
+                  onClick={() => navigate("/my-orders")}
+                  className="p-2 pl-3 cursor-pointer flex items-center gap-2"
+                >
+                  📦 My Orders
+                </motion.li>
+                <motion.li
+                  whileHover={{ backgroundColor: "#4fbf8b", x: 0.5 }}
+                  onClick={logout}
+                  className="p-2 pl-3 cursor-pointer flex items-center gap-2"
+                >
+                  🚪 Logout
+                </motion.li>
+              </ul>
+            )}
           </div>
         )}
       </div>

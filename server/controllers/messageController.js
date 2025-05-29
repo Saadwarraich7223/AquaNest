@@ -37,7 +37,7 @@ export const readMessage = async (req, res) => {
 
 export const messageList = async (req, res) => {
   try {
-    const messages = await Message.find({});
+    const messages = await Message.find({}).sort({ createdAt: -1 });
     res.json({ success: true, messages });
   } catch (error) {
     res.json({ success: false, message: error.message });

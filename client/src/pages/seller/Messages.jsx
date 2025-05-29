@@ -31,10 +31,7 @@ const Messages = () => {
     try {
       const { data } = await axios.get("/api/message/list");
       if (data.success) {
-        const sortedMessages = data.messages.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-        setMessages(sortedMessages);
+        setMessages(data.messages);
       } else {
         toast.error(data.message);
       }

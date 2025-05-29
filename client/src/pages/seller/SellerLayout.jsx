@@ -24,7 +24,9 @@ const SellerLayout = () => {
   };
 
   useEffect(() => {
-    fetchMessages();
+    setInterval(() => {
+      fetchMessages();
+    }, 4000);
   }, [newMessages, setNewMessages]);
 
   useEffect(() => {
