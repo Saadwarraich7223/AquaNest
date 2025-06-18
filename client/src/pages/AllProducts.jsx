@@ -105,7 +105,7 @@ const AllProducts = () => {
           <motion.button
             className={`px-3 py-1 text-sm rounded-full border  border-gray-300 whitespace-nowrap ${
               selectedCategory === null
-                ? "bg-primary "
+                ? "bg-primary border-none "
                 : "bg-white text-gray-600 border-gray-300"
             }`}
             variants={categoryButtonVariants}
