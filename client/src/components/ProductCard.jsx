@@ -50,14 +50,15 @@ const ProductCard = ({ product }) => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       >
-        <div className="cursor-pointer flex  w-full h-[130px] overflow-hidden rounded-sm max-h-[130px] min-h-[130px] items-center justify-center  mb-2  overflow-hidden rounded-md ">
-          <motion.img
-            variants={imageVariants}
-            className="h-full   w-full  object-contain"
-            src={product.image[0]}
-            alt={product.name}
-          />
-        </div>
+        <div className="cursor-pointer flex w-full h-[130px] overflow-hidden rounded-md items-center justify-center mb-2">
+  <motion.img
+    variants={imageVariants}
+    className="w-full h-full object-cover"
+    src={product.image[0]}
+    alt={product.name}
+  />
+</div>
+
         <div className="text-gray-500/70 text-sm">
           <p className="text-xs uppercase tracking-wider font-medium">
             {product.category}
