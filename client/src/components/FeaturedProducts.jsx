@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
     },
   };
   return (
-    <div className="mt-16 px-2 md:px-6 pt-8 pb-18  bg-slate-100 shadow-xl">
+    <div className="mt-16 md:px-3 pt-8 pb-18  bg-slate-100 shadow-xl">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
