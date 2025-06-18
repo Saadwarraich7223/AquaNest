@@ -103,10 +103,10 @@ const AllProducts = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <motion.button
-            className={`px-3 py-1 text-sm rounded-full border  border-gray-300 whitespace-nowrap ${
+            className={`px-3 py-1 text-sm rounded-full  whitespace-nowrap ${
               selectedCategory === null
-                ? "bg-primary border-none "
-                : "bg-white text-gray-600 border-gray-300"
+                ? "bg-primary text-white border-none "
+                : "bg-white text-gray-600 border border-gray-300"
             }`}
             variants={categoryButtonVariants}
             animate={selectedCategory === null ? "active" : "inactive"}
