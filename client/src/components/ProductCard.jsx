@@ -148,7 +148,7 @@ const ProductCard = ({ product }) => {
   </div>
 
   {/* Sale Badge */}
-  {product.price - product.offerPrice > 500 && (
+  {product.price - product.offerPrice > 400 && (
     <motion.div
       className="absolute top-2 left-2 bg-primary text-white text-[10px] font-semibold px-2 py-0.5 rounded-full shadow-sm"
       initial={{ opacity: 0, scale: 0.8 }}
