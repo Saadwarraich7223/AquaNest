@@ -50,7 +50,7 @@ const ProductCard = ({ product }) => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       >
-        <div className="cursor-pointer flex  w-full h-[130px] max-h-[130px] min-h-[130px] items-center justify-center  mb-2  overflow-hidden rounded-md ">
+        <div className="cursor-pointer flex  w-full h-[130px] overflow-hidden rounded-sm max-h-[130px] min-h-[130px] items-center justify-center  mb-2  overflow-hidden rounded-md ">
           <motion.img
             variants={imageVariants}
             className="h-full   w-full  object-contain"
