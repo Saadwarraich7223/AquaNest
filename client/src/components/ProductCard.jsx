@@ -50,7 +50,7 @@ const ProductCard = ({ product }) => {
   }}
 >
   {/* Image */}
-  <div className="w-full h-[150px] rounded-t-2xl overflow-hidden flex items-center justify-center bg-gray-50">
+  <div className="w-full h-[150px] rounded-t-md overflow-hidden flex items-center justify-center bg-gray-50">
     <motion.img
       variants={imageVariants}
       className="w-full h-full object-cover"
