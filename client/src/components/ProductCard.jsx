@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
     product && (
                       
     <motion.div
-  className="relative bg-white border border-gray-200 rounded-2xl shadow-md transition-all hover:shadow-lg sm:min-w-36 min-w-36 max-w-56 w-full cursor-pointer"
+  className="relative bg-white border border-gray-200 rounded-md shadow-md transition-all hover:shadow-lg sm:min-w-36 min-w-36 max-w-56 w-full cursor-pointer"
   variants={cardVariants}
   initial="initial"
   whileHover="hover"
