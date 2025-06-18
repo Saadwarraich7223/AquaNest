@@ -120,8 +120,8 @@ const AllProducts = () => {
           {categories.slice(0, 4).map((category) => (
             <motion.button
               key={category}
-              className={`px-3 py-1 text-sm rounded-full border  border-gray-300 whitespace-nowrap ${
-                selectedCategory === category ? "bg-primary" : "bg-white"
+              className={`px-3 py-1 text-sm rounded-full  whitespace-nowrap ${
+                selectedCategory === category ? "bg-primary text-white border-none" : "bg-white border  border-gray-300 "
               }`}
               variants={categoryButtonVariants}
               animate={selectedCategory === category ? "active" : "inactive"}
