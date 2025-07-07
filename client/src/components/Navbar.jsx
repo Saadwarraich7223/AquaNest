@@ -83,7 +83,7 @@ const Navbar = () => {
       initial="hidden"
       animate="visible"
       variants={navVariants}
-      className={`flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 
+      className={`flex items-center justify-between px-6 md:px-8 lg:px-8 xl:px-12 py-4 border-b border-gray-300 
         ${scrolled ? "shadow-md bg-white/95 backdrop-blur-sm" : "bg-white"}
         sticky top-0 z-50 transition-all duration-300`}
     >
