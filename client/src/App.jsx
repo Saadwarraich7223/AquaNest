@@ -55,7 +55,7 @@ const App = () => {
       <ToTopScroller />
       <Toaster />
       <div
-        className={`${isSellerPath ? "" : "px-1 md:px-16 lg:px-14 xl:px-20"}`}
+        className={`${isSellerPath ? "" : "px-1 md:px-6 lg:px-8 xl:px-12"}`}
       >
         <Routes>
           <Route path="/" element={<Home />} />
