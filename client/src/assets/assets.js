@@ -11,10 +11,12 @@ import thumbnail2 from "./thumbnail2.jpg";
 import thumbnail3 from "./thumbnail3.jpg";
 import thumbnail4 from "./thumbnail4.jpg";
 
-import fish from "./fish.png";
-import fishfood from "./fishfood.png";
-import fishtank from "./fishtank.png";
-import fishTankAccessories from "./fishTankAccessories.png";
+import cat1 from "./cat1.jpeg";
+import fishfood from "./fishfood.jpeg";
+
+import fishtank from "./fishtank.jpeg";
+
+import fishTankAccessories from "./fishTankAccessories.jpeg";
 
 import search_icon from "./search_icon.svg";
 import remove_icon from "./remove_icon.svg";
@@ -32,12 +34,18 @@ import delivery_truck_icon from "./delivery_truck_icon.svg";
 import black_arrow_icon from "./black_arrow_icon.svg";
 import white_arrow_icon from "./white_arrow_icon.svg";
 import message_icon from "./message_icon.png";
+import tropicalFish from "./tropicalFish.png";
+import wood from "./wood.png";
+import aquairum from "./aquairum.png";
 
 import yellow_fish from "./yellow_fish.jpg";
 
 import white_fish from "./white_fish.jpg";
 
 export const assets = {
+  aquairum,
+  wood,
+  tropicalFish,
   message_icon,
   upload_area,
   thumbnail2,
@@ -104,7 +112,7 @@ export const categories = [
   {
     text: "Aquatic Fish",
     path: "Fish",
-    image: fish,
+    image: cat1,
     bgColor: "rgba(255, 224, 102, 0.4)", // Vibrant yellow with 70% opacity
   },
   {

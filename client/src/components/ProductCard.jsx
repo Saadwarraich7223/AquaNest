@@ -10,8 +10,8 @@ const ProductCard = ({ product }) => {
 
   return (
     <motion.div
-      className="relative bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 min-w-[140px] max-w-[220px] w-full cursor-pointer"
-      initial={{ opacity: 0, y: 15 }}
+      className="relative glass-card rounded-xl overflow-hidden cursor-pointer group transition-all duration-300 hover:border-black/10 hover:-translate-y-1 min-w-[140px] max-w-[220px] w-full"
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
       onClick={() => {
@@ -19,27 +19,24 @@ const ProductCard = ({ product }) => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
     >
-      {/* Image */}
-      <div className="w-full aspect-square overflow-hidden bg-gray-50 flex items-center justify-center">
+      <div className="w-full aspect-square overflow-hidden bg-surface-elevated flex items-center justify-center">
         <img
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           src={product.image[0]}
           alt={product.name}
           loading="lazy"
         />
       </div>
 
-      {/* Details */}
-      <div className="px-3.5 py-3 space-y-1.5">
-        <p className="text-[10px] uppercase tracking-widest font-semibold text-primary/60">
+      <div className="px-3.5 py-3.5 space-y-1.5">
+        <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent/70">
           {product.category}
         </p>
 
-        <p className="text-sm font-semibold text-gray-900 leading-snug truncate">
+        <p className="text-sm font-semibold text-on-surface leading-snug truncate">
           {product.name}
         </p>
 
-        {/* Stars - Static, no hover */}
         <div className="flex items-center gap-0.5">
           {Array(5)
             .fill("")
@@ -48,50 +45,44 @@ const ProductCard = ({ product }) => {
                 key={i}
                 src={i < 4 ? assets.star_icon : assets.star_dull_icon}
                 alt=""
-                className="w-3 h-3"
+                className="w-3 h-3 opacity-70"
               />
             ))}
-          <p className="ml-1 text-[10px] text-gray-400">(4)</p>
+          <p className="ml-1 text-[10px] text-on-surface-muted">(4)</p>
         </div>
 
-        {/* Price */}
         <div className="pt-1">
-          <p className="text-base font-bold text-primary">
+          <p className="text-base font-bold text-accent">
             {currency} {product.offerPrice}
           </p>
-          <p className="text-[11px] line-through text-gray-400">
+          <p className="text-[11px] line-through text-on-surface-muted/60">
             {currency} {product.price}
           </p>
         </div>
 
-        {/* Cart Controls */}
         <div onClick={(e) => e.stopPropagation()} className="pt-1.5">
           {!cartItems[product._id] ? (
             <button
               onClick={() => addToCart(product._id)}
-              className="flex items-center justify-center gap-1.5 bg-primary/10 text-primary border border-primary/20 w-full h-9 rounded-full font-medium text-xs transition-all duration-200 hover:bg-primary/20 cursor-pointer"
+              className="flex items-center justify-center gap-1.5 bg-accent/10 text-accent border border-accent/20 w-full h-9 rounded-lg font-medium text-xs transition-all duration-200 hover:bg-accent/20 cursor-pointer"
             >
-              <img
-                src={assets.cart_icon}
-                alt="cart"
-                className="w-3.5 h-3.5"
-              />
+              <img src={assets.cart_icon} alt="cart" className="w-3.5 h-3.5" />
               Add to Cart
             </button>
           ) : (
-            <div className="flex items-center justify-center gap-1 bg-primary/10 border border-primary/20 w-full h-9 rounded-full select-none">
+            <div className="flex items-center justify-center gap-1 bg-accent/10 border border-accent/20 w-full h-9 rounded-lg select-none">
               <button
                 onClick={() => removeFromCart(product._id)}
-                className="text-base px-2.5 h-full font-bold text-primary hover:text-red-500 transition-colors"
+                className="text-base px-2.5 h-full font-bold text-on-surface hover:text-red-500 transition-colors"
               >
                 -
               </button>
-              <span className="w-6 text-center text-sm font-medium">
+              <span className="w-6 text-center text-sm font-medium text-on-surface">
                 {cartItems[product._id]}
               </span>
               <button
                 onClick={() => addToCart(product._id)}
-                className="text-base px-2.5 h-full font-bold text-primary hover:text-green-600 transition-colors"
+                className="text-base px-2.5 h-full font-bold text-on-surface hover:text-accent transition-colors"
               >
                 +
               </button>
@@ -100,9 +91,8 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      {/* Sale Badge */}
       {product.price - product.offerPrice > 400 && (
-        <div className="absolute top-2.5 left-2.5 bg-red-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+        <div className="absolute top-2.5 left-2.5 bg-accent text-white text-[10px] font-bold px-2.5 py-1 rounded shadow-sm">
           SALE
         </div>
       )}

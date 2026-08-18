@@ -24,7 +24,9 @@ import Messages from "./pages/seller/Messages";
 import AquanestLoading from "./components/AquanestLoading";
 
 const App = () => {
-  const isSellerPath = useLocation().pathname.includes("seller");
+  const location = useLocation();
+  const isSellerPath = location.pathname.includes("seller");
+  const isHome = location.pathname === "/";
 
   const [loading, setLoading] = useState(true);
   const { showUserLogin, isSeller } = useAppContext();
@@ -38,7 +40,7 @@ const App = () => {
       const timer = setTimeout(() => {
         setLoading(false);
         sessionStorage.setItem("aquanestLoaded", "true");
-      }, 3000); // Adjust time as needed
+      }, 3000);
 
       return () => clearTimeout(timer);
     }
@@ -49,13 +51,21 @@ const App = () => {
   }
 
   return (
-    <div className="body text-default bg-gray-300/10 min-h-screen text-gray-700 ">
+    <div className="bg-surface text-on-surface min-h-screen">
       {isSellerPath ? null : <Navbar />}
       {showUserLogin ? <Login /> : null}
       <ToTopScroller />
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "#ffffff",
+            color: "#1a1d1f",
+            border: "1px solid rgba(0,0,0,0.08)",
+          },
+        }}
+      />
       <div
-        className={`${isSellerPath ? "" : "px-1 md:px-6 lg:px-8 xl:px-12"}`}
+        className={`${isSellerPath || isHome ? "" : "px-1 md:px-6 lg:px-8 xl:px-12"}`}
       >
         <Routes>
           <Route path="/" element={<Home />} />

@@ -5,80 +5,82 @@ import { FaFish, FaShippingFast, FaHeartbeat, FaUserTie } from "react-icons/fa";
 const WhyChooseUs = () => {
   const features = [
     {
-      icon: <FaFish className="text-2xl text-blue-400" />,
-      title: "Premium Quality Fish",
+      icon: <FaFish className="text-xl text-blue-500" />,
+      title: "Premium Quality",
       description:
         "Hand-selected healthy fish from trusted breeders worldwide, ensuring vibrant colors and excellent genetics.",
-      gradient: "from-blue-500/20 to-cyan-500/20",
     },
     {
-      icon: <FaShippingFast className="text-2xl text-green-400" />,
-      title: "Fast & Safe Delivery",
+      icon: <FaShippingFast className="text-xl text-emerald-500" />,
+      title: "Safe Delivery",
       description:
         "Express shipping with temperature-controlled packaging ensures your fish arrive healthy and stress-free.",
-      gradient: "from-green-500/20 to-emerald-500/20",
     },
     {
-      icon: <FaHeartbeat className="text-2xl text-red-400" />,
+      icon: <FaHeartbeat className="text-xl text-rose-500" />,
       title: "Health Guarantee",
       description:
-        "7-day live arrival guarantee with comprehensive health checks. Your satisfaction is our top priority.",
-      gradient: "from-red-500/20 to-pink-500/20",
+        "7-day live arrival guarantee with comprehensive health checks. Your satisfaction is our priority.",
     },
     {
-      icon: <FaUserTie className="text-2xl text-purple-400" />,
+      icon: <FaUserTie className="text-xl text-violet-500" />,
       title: "Expert Guidance",
       description:
-        "Our specialists provide personalized advice on fish care, tank setup, and maintenance for lasting success.",
-      gradient: "from-purple-500/20 to-violet-500/20",
+        "Personalized advice on fish care, tank setup, and maintenance from our experienced team.",
     },
   ];
 
   return (
-    <section className="py-20 mt-16 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
+    <section className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#e9f4fc] via-[#dff0f9] to-[#e4f0fa]" />
+      <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full bg-[#89c4e1]/15 blur-[110px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#b3d9f2]/20 blur-[100px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-16 lg:px-20">
         <motion.div
-          className="text-center mb-14"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-400 rounded-full mb-4">
-            <FaFish className="text-xl text-white" />
+          <div className="inline-flex items-center justify-center w-12 h-12 bg-white/50 backdrop-blur-sm rounded-full mb-5 border border-white/60 shadow-lg">
+            <FaFish className="text-lg text-accent" />
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-blue-300 to-teal-300 bg-clip-text text-transparent">
-            Why Choose AquaNest?
+          <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent mb-3 block">
+            Why AquaNest
+          </span>
+
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-on-surface mb-4">
+            Built for Enthusiasts
           </h2>
 
-          <p className="text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
-            Dive into excellence with our premium aquatic solutions for enthusiasts at every level.
+          <p className="text-on-surface-muted max-w-xl mx-auto leading-relaxed">
+            Premium aquatic solutions for enthusiasts at every level.
           </p>
         </motion.div>
 
-        {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
               className="group"
             >
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 h-full border border-white/10 hover:border-white/25 hover:bg-white/15 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2">
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4`}>
+              <div className="glass-card rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#89c4e1]/15 hover:border-white/60">
+                <div className="w-12 h-12 rounded-xl bg-white/50 backdrop-blur-sm flex items-center justify-center mb-5 border border-white/60 shadow-sm group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
 
-                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                <h3 className="text-base font-semibold text-on-surface mb-3 group-hover:text-accent transition-colors duration-300">
                   {feature.title}
                 </h3>
 
-                <p className="text-blue-100/70 text-sm leading-relaxed group-hover:text-blue-100/90 transition-colors duration-300">
+                <p className="text-on-surface-muted text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -86,20 +88,16 @@ const WhyChooseUs = () => {
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center mt-14"
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <button className="bg-gradient-to-r from-blue-500 to-teal-400 text-white px-10 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:from-blue-600 hover:to-teal-500 hover:scale-105 active:scale-95 cursor-pointer">
+          <button className="font-mono text-xs text-white bg-accent hover:bg-accent-bright px-8 py-3.5 rounded-lg transition-all duration-300 uppercase tracking-wider cursor-pointer shadow-[0_0_20px_rgba(79,191,139,0.2)] hover:shadow-[0_0_30px_rgba(79,191,139,0.35)] hover:-translate-y-0.5">
             Learn More
           </button>
-          <p className="text-blue-200/60 mt-4 text-sm">
-            Join thousands of satisfied customers who trust AquaNest
-          </p>
         </motion.div>
       </div>
     </section>
