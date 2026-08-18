@@ -11,15 +11,30 @@
   font-family: "Outfit", sans-serif;
 }
 
-.body {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   background-color: #f9f9f9;
 }
 
+::selection {
+  background-color: rgba(79, 191, 139, 0.25);
+  color: #1a1a1a;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }

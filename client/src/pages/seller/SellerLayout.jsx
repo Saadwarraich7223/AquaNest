@@ -24,10 +24,12 @@ const SellerLayout = () => {
   };
 
   useEffect(() => {
-    setInterval(() => {
+    fetchMessages();
+    const interval = setInterval(() => {
       fetchMessages();
-    }, 4000);
-  }, [newMessages, setNewMessages]);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {

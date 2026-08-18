@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaFish } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-16 mt-8 bg-slate-100 shadow-xl">
+    <section className="py-16 mt-8 bg-slate-50 rounded-2xl">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center"
@@ -28,13 +28,9 @@ const Newsletter = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Icon */}
-          <motion.div
-            className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-6"
-            whileHover={{ scale: 1.1, rotate: 15 }}
-            transition={{ duration: 0.3 }}
-          >
-            <FaEnvelope className="text-blue-600 text-lg" />
-          </motion.div>
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-full mb-6">
+            <FaEnvelope className="text-primary text-lg" />
+          </div>
 
           {/* Title */}
           <h2 className="text-3xl font-bold text-gray-900 mb-3">
@@ -42,78 +38,54 @@ const Newsletter = () => {
           </h2>
 
           {/* Description */}
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Get weekly aquarium tips, new fish arrivals, and exclusive offers
-            delivered to your inbox.
+          <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+            Get weekly aquarium tips, new fish arrivals, and exclusive offers delivered to your inbox.
           </p>
 
           {/* Form */}
-          <motion.form
-            onSubmit={handleSubmit}
-            className="max-w-md mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
             <div className="flex flex-col sm:flex-row gap-3">
-              <motion.input
+              <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-                whileFocus={{ scale: 1.02 }}
+                className="flex-1 px-5 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all duration-200 bg-white"
                 required
               />
 
-              <motion.button
+              <button
                 type="submit"
-                className="px-6 py-3 bg-primary cursor-pointer text-white rounded-lg font-medium hover:bg-primary-dull transition-colors duration-200 flex items-center justify-center gap-2 min-w-[120px]"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
+                className="px-7 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-primary-dull transition-all duration-200 flex items-center justify-center gap-2 min-w-[130px] cursor-pointer hover:shadow-lg hover:shadow-primary/20 active:scale-95"
                 disabled={isSubmitted}
               >
                 {isSubmitted ? (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="flex items-center gap-2"
-                  >
+                  <span className="flex items-center gap-2">
                     <span>✓</span>
                     <span>Subscribed!</span>
-                  </motion.div>
+                  </span>
                 ) : (
-                  <>
-                    <span>Subscribe</span>
-                    <FaFish className="text-sm" />
-                  </>
+                  <span>Subscribe</span>
                 )}
-              </motion.button>
+              </button>
             </div>
-          </motion.form>
+          </form>
 
           {/* Success message */}
           {isSubmitted && (
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-green-600 text-sm mt-3"
+              className="text-green-600 text-sm mt-4"
             >
-              Welcome to the AquaNest community! 🐠
+              Welcome to the AquaNest community!
             </motion.p>
           )}
 
           {/* Privacy note */}
-          <motion.p
-            className="text-xs text-gray-500 mt-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          <p className="text-xs text-gray-400 mt-4">
             No spam, unsubscribe anytime. We respect your privacy.
-          </motion.p>
+          </p>
         </motion.div>
       </div>
     </section>
